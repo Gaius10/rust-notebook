@@ -24,7 +24,7 @@ fn main() {
     //
     // Solution: slices.
     //
-    // A string slice is a referenc e to a part of a String.
+    // A string slice is a reference to a part of a String.
     let s = String::from("Hello world!");
     let hello = &s[0..5];
     let world = &s[6..11];
