@@ -85,6 +85,11 @@ fn main() {
     let s3 = takes_and_gives_ownership(s2);
     println!("Returned s2 (s3): {s3}");
 
+    // Problem of ownership system: boring moves in and out of scope
+    let s1 = String::from("Hello");
+    let (s1, len) = calculate_len(s1);
+    println!("The length of '{s1}' is {len}.");
+    // Solution in the next chapter
 }
 
 fn takes_ownership(some_string: String) {
@@ -105,6 +110,9 @@ fn takes_and_gives_ownership(some_string: String) -> String {
     some_string
 }
 
-
+fn calculate_len(some_string: String) -> (String, usize) {
+    let len = some_string.len();
+    (some_string, len)
+}
 
 
