@@ -25,6 +25,19 @@ impl Rectangle {
         self.width > another.width &&
         self.height > another.height
     }
+
+    //
+    // This is not a method, as it doesn't depends on a `self`
+    // parameter, but it's an associated function.
+    // Obs.: another example of associated function that is not a
+    // method is String::new().
+    //
+    fn square(size: u32) -> Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
 }
 
 fn main() {
@@ -43,6 +56,8 @@ fn main() {
         height: 45,
     };
 
+    let square = Rectangle::square(30);
+
     if rect1.width() {
         println!(
             "The rectangle has a nonzero width. It is {}.",
@@ -57,5 +72,7 @@ fn main() {
 
     println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
     println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+
+    println!("Square: {:#?}", square);
 }
 
