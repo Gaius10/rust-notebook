@@ -37,5 +37,24 @@ fn main() {
     let loopback = IpAddr::V6(Ipv6Addr {});
     let m = Message::Write(String::from("Hello"));
     m.call();
+
+    // Rust have no implementation of the null value, but it's
+    // possible to deal with absent values through Option<T> enum.
+    let some_number = Some(5);
+    let some_char = Some('e');
+    let absent_number: Option<i32> = None;
+
+    // This approach is better than having null values because
+    // this way Rust compiler can prevent us of making invalid
+    // operations with T and null, since T and Option<T> are
+    // diffent types.
+    let x: i8 = 5;
+    let y: Option<i8> = Some(5);
+    // let sum = x + y; // Would'n compile
 }
+
+
+
+
+
 
