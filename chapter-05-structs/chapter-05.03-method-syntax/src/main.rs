@@ -4,6 +4,7 @@ struct Rectangle {
     height: u32,
 }
 
+// Methods...
 impl Rectangle {
     //
     // `self` is of type &Self, alias for the current type.
@@ -26,6 +27,10 @@ impl Rectangle {
         self.height > another.height
     }
 
+}
+
+// Constructors...
+impl Rectangle {
     //
     // This is not a method, as it doesn't depends on a `self`
     // parameter, but it's an associated function.
