@@ -1,11 +1,29 @@
 use std::collections::HashMap;
 
-pub fn median(v: &Vec<i32>) -> Option<&i32> {
+#[derive(Debug)]
+pub struct AwesomeVec(pub Vec<i32>);
+
+impl AwesomeVec {
+    pub fn from(mut v: Vec<i32>) -> Self {
+        v.sort();
+        Self(v)
+    }
+
+    pub fn len(&self) -> usize {
+        let Self(v) = self;
+        v.len()
+    }
+}
+
+pub fn median(v: &AwesomeVec) -> Option<&i32> { 
+    let AwesomeVec(v) = v;
+
     let median_index = (v.len() as f64 / 2.0).ceil() as usize;
     v.get(median_index - 1)
 }
 
-pub fn mode(v: &Vec<i32>) -> Option<&i32> {
+pub fn mode(v: &AwesomeVec) -> Option<&i32> {
+    let AwesomeVec(v) = v;
     let mut count_map: HashMap<&i32, u32> = HashMap::new();
 
     for element in v {
