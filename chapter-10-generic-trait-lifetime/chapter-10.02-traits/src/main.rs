@@ -4,7 +4,7 @@
 // TLDR:
 // Traits are the almost-equivalent of PHP's interfaces
 
-use aggregator::{SocialPost, Summary};
+use aggregator::{SocialPost, NewsArticle, Summary};
 
 fn main() {
     let post = SocialPost {
@@ -17,6 +17,20 @@ fn main() {
     };
 
     println!("1 new social post: {}", post.summarize());
+
+    let article = NewsArticle {
+        headline: String::from(
+            "Penguins win the Stanley Cup Championship!",
+        ),
+        location: String::from("Pittsburgh, PA, USA"),
+        author: String::from("Iceburgh"),
+        content: String::from(
+            "The Pittsburgh Penguins once again are the best \
+             hockey team in the NHL.",
+        ),
+    };
+
+    println!("New article available! {}", article.summarize());
 }
 
 // Interesting point: we can't implement external traits on external
