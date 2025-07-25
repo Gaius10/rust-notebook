@@ -1,3 +1,6 @@
+#![allow(unused_variables)]
+#![allow(dead_code)]
+
 pub trait Summary {
     fn summarize_author(&self) -> String;
 
@@ -71,4 +74,20 @@ pub fn notify(item: &impl Summary) {
 //     U: Clone + Debug,
 // { ... }
 //
+
+// Returning traits:
+fn returns_summarizable() -> impl Summary {
+    SocialPost {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        repost: false,
+    }
+}
+
+// Using all of this it's possible to conditionally implement traits
+// see the docs for more details and search for blanket
+// implementations.
 
