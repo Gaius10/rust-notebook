@@ -1,3 +1,6 @@
+#![allow(unused_variables)]
+#![allow(dead_code)]
+
 use std::cmp::PartialOrd;
 
 fn largest<T: PartialOrd>(list: &[T]) -> &T {
@@ -12,6 +15,17 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
     largest
 }
 
+// Just an example with structs:
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+struct MixedPoint<T, U> {
+    x: T,
+    y: U,
+}
+
 fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
     let char_list = vec!['y', 'm', 'a', 'q'];
@@ -21,5 +35,10 @@ fn main() {
 
     let result = largest(&char_list);
     println!("The largest char is {result}");
+
+    let integer_point = Point { x: 1, y: 2 };
+    let float_point = Point { x: 1.0, y: 2.0 };
+    // let error_point = Point { x: 1.0, y: 2 };
+    let mixed_point = MixedPoint { x: 1.0, y: 2 };
 }
 
