@@ -31,6 +31,8 @@ fn main() {
     };
 
     println!("New article available! {}", article.summarize());
+
+    aggregator::notify(&article);
 }
 
 // Interesting point: we can't implement external traits on external
