@@ -1,4 +1,3 @@
-
 pub trait Summary {
     fn summarize_author(&self) -> String;
 
@@ -43,4 +42,33 @@ impl Summary for SocialPost {
 pub fn notify(item: &impl Summary) {
     println!("Breaking news! {}", item.summarize());
 }
+//
+// Obs.:
+//
+// pub fn notify<T: Summary>(item: &T) {
+// Is equiv. to:
+// pub fn notify(item: &impl Summary) {
+//
+// use one or another for different situations. See the docs for
+// more details.
+//
+// Multiple trait bound is possible with:
+// &(impl Sometrait + Othertrait)
+// or
+// <T: Sometrait + Othertrait>
+//
+// Clearer syntax for multiple trait bounds:
+//
+// fn some_function<T: Display + Clone, U: Clone + Debug>(
+//     t: &T, u: &U
+// ) -> i32 { ... }
+//
+// is the same as
+//
+// fn some_function<T, U>(t: &T, u: &U) -> i32
+// where
+//     T: Display + Clone,
+//     U: Clone + Debug,
+// { ... }
+//
 
