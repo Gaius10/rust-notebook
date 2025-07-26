@@ -53,6 +53,12 @@ fn main() {
     };
 
     println!("{i:?}");
+
+    // static lifetime:
+    let s: &'static str = "I have a static lifetime";
+    // `s` lives as long as the entire application.
+    // Have caution with error messages that suggests using this,
+    // they may be the result of tries of creating dangling refs.
 }
 
 // In some cases, Rust compiler can infer lifetimes:
@@ -64,7 +70,7 @@ fn main() {
 // Lifetime elision rules: (lifetime inference)
 //
 // - 1. Each reference parameter receives an lifetime parameter;
-//          Ex.: fn foo<'a, 'b>(x: &'a i32, y: &'b i32) -> &'a i32
+//          Ex.: fn foo<'a, 'b>(x: &'a i32, y: &'b i32) -> &i32
 //
 // - 2. If there is exatctly one input lifetime parameter, that
 //      lifetime is assigned to all output lifetimer parameters;
@@ -74,5 +80,8 @@ fn main() {
 //      them is &self or &mut self because this is a method, the
 //      lifetime of self is assigned to all output lifetime
 //      parameters.
+//
+// - Note: it's possible that in the future more lifetime elision
+//  rules come up, as more patterns are discovered.
 ////////////////////////////////////////////////////////////////////
 
