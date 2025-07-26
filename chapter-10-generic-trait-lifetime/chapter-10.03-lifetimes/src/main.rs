@@ -55,3 +55,24 @@ fn main() {
     println!("{i:?}");
 }
 
+// In some cases, Rust compiler can infer lifetimes:
+// fn first_word<'a>(s: &'a str) -> &'a str { ... };
+// is the same as
+// fn first_word(s: &str) -> &str { ... };
+//
+////////////////////////////////////////////////////////////////////
+// Lifetime elision rules: (lifetime inference)
+//
+// - 1. Each reference parameter receives an lifetime parameter;
+//          Ex.: fn foo<'a, 'b>(x: &'a i32, y: &'b i32) -> &'a i32
+//
+// - 2. If there is exatctly one input lifetime parameter, that
+//      lifetime is assigned to all output lifetimer parameters;
+//          Ex.: fn foo<'a>(x: &'a i32) -> &'a i32
+//
+// - 3. If there are multiple input lifetime parameters, but one of
+//      them is &self or &mut self because this is a method, the
+//      lifetime of self is assigned to all output lifetime
+//      parameters.
+////////////////////////////////////////////////////////////////////
+
