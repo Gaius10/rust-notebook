@@ -1,8 +1,12 @@
 #![allow(dead_code)]
-#![allow(unused_variables)];
+#![allow(unused_variables)]
 
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
+}
+
+pub fn add_two(a: usize) -> usize {
+    a + 2
 }
 
 #[derive(Debug)]
@@ -23,8 +27,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn exploration() {
+    fn it_adds() {
         let result = add(2, 2);
+        assert_eq!(result, 4);
+    }
+
+    #[test]
+    fn it_adds_two() {
+        let result = add_two(2);
         assert_eq!(result, 4);
     }
 
@@ -56,7 +66,6 @@ mod tests {
         };
 
         assert!(!smaller.can_hold(&larger));
-
     }
 }
 
