@@ -44,6 +44,23 @@ impl Guess {
 mod tests {
     use super::*;
 
+    //
+    // Writing tests so they return a Result<T, E> enables you
+    // to use the question mark operator in the body of tests,
+    // which can be a convenient way to write tests that should
+    // fail if any operation within them returns an Err variant.
+    //
+    #[test]
+    fn it_words() -> Result<(), String> {
+        let result = add(2, 2);
+
+        if result == 4 {
+            Ok(())
+        } else {
+            Err(String::from("2 + 2 != 4"))
+        }
+    }
+
     #[test]
     fn greeting_contains_name() {
         let result = greeting("Carol");
