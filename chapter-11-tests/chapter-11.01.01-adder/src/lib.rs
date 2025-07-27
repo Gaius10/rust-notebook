@@ -1,6 +1,10 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
 
+pub fn greeting(name: &str) -> String {
+    format!("Hello {name}!")
+}
+
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
 }
@@ -25,6 +29,15 @@ impl Rectangle {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn greeting_contains_name() {
+        let result = greeting("Carol");
+        assert!(
+           result.contains("Carol"),
+           "Greeting did not contain name, value was `{result}`",
+        );
+    }
 
     #[test]
     fn it_adds() {
