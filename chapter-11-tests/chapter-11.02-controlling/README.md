@@ -25,4 +25,5 @@ try `cargo test add`
 ## Running ignored tests:
 
 `cargo test -- --ignored`
+`cargo test -- --include-ignored`
 
