@@ -20,6 +20,16 @@ struct Config {
 
 impl Config {
     fn new(args: &[String]) -> Self {
+        if args.len() < 3 {
+            panic!(
+                "\n\
+                Not enough arguments.\n\
+                Usage: {} <search_string> <file_path>
+                ",
+                args[0]
+            );
+        }
+
         let query = args[1].clone();
         let file_path = args[2].clone();
 
