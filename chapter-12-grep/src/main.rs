@@ -1,8 +1,9 @@
 use std::env;
 use std::process;
 
-use minigrep::Config;
-;
+use minigrep::core;
+use minigrep::config::Config;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     let config = Config::build(&args).unwrap_or_else(|err| {
@@ -10,10 +11,10 @@ fn main() {
         process::exit(1);
     });
 
-    println!("Searching for {}", config.query);
+    println!("Searching for '{}'", config.query);
     println!("In file {}", config.file_path);
 
-    if let Err(e) = minigrep::run(config) {
+    if let Err(e) = core::run(config) {
         println!("Application error: {e}");
         process::exit(1);
     }
