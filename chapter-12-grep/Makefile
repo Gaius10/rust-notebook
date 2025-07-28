@@ -1,5 +1,5 @@
 run:
-	cargo run -- searchstring poem.txt
+	cargo run -- frog poem.txt
 
 test:
 	cargo test
