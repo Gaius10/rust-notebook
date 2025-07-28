@@ -1,3 +1,3 @@
 run:
-	cargo run -- searchstring example-filename.txt
+	cargo run -- searchstring poem.txt
 
