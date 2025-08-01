@@ -12,14 +12,12 @@ impl Config {
     ) -> Result<Self, &'static str> {
         args.next();
 
-        let query = match args.next() {
-            Some(arg) => arg,
-            None => return Err("Didn't get a query string"),
+        let Some(query) = args.next() else {
+            return Err("Didn't get a query string");
         };
 
-        let file_path = match args.next() {
-            Some(arg) => arg,
-            None => return Err("Didn't get a file path"),
+        let Some(file_path) = args.next() else {
+            return Err("Didn't get a file path");
         };
 
         let ignore_case = env::var("IGNORE_CASE").is_ok();
