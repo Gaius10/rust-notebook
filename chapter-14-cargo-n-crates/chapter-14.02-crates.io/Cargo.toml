@@ -1,0 +1,8 @@
+[package]
+name = "my-first-create-some-not-so-random-phrase-to-make-it-unique"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "Just my first published crate, it adds a number."
+
+[dependencies]
