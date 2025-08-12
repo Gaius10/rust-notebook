@@ -25,4 +25,11 @@ fn main() {
     };
 
     println!("CustomSmartPointers created.");
+
+    // This throws error:
+    // c.drop();
+    // std::mem::drop function must be used.
+    // This way Rust prevents itself from double free problems.
+    std::mem::drop(c);
+    println!("CustomSmartPointer dropped before the end of scope.");
 }
