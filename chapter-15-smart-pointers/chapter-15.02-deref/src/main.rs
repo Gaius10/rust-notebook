@@ -37,6 +37,12 @@ fn main() {
 
     let m = MyBox::new(String::from("Rust"));
     hello(&m);
+
+    // If Rust didn't implement deref coercion, we would have to write the code
+    // like this:
+    //
+    // let m = MyBox::new(String::from("rust"));
+    // hello(&(*m)[..]);
 }
 
 fn hello(name: &str) {
